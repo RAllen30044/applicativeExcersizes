@@ -1,3 +1,4 @@
+
 import { data } from "../data/data";
 
 // SPACE DATA EXERCISE 11
@@ -7,6 +8,9 @@ import { data } from "../data/data";
 
 export function lowMoonsPlanets(data) {
   // Your code goes here...
+  return data.planets
+    .filter((planet) => ((planet.moonsCount < 10) || (!planet.moonsCount)))
+    .map((planet) => planet.name);
 }
 
 // === TEST YOURSELF ===
