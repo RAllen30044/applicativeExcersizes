@@ -7,6 +7,13 @@ import { data } from "../data/data";
 export function getGreatestDiscoveryYear(data) {
   // Your code goes here...
   // feel free to import your `maxBy` or `minBy` methods from previous lessons
+  const rock = data.asteroids.reduce((asteroid, name) => {
+    let currCount = asteroid[name.discoveryYear] ?? 0;
+    return { ...asteroid, [name.discoveryYear]: currCount + 1 };
+  }, {});
+  const maxValue = Math.max(...Object.values(rock));
+  const value = Object.entries(rock).find((element) => element[1] === maxValue);
+  return ~~value[0];
 }
 
 // === TEST YOURSELF ===
